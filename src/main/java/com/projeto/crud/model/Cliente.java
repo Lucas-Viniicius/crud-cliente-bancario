@@ -15,7 +15,7 @@ public class Cliente {
     @Id // define essa coluna como primary key
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Gera Id automaticamente
     private Long id;
-    private String username;
+    private String userName;
     private String email;
     private String password;
     private boolean ativo;
