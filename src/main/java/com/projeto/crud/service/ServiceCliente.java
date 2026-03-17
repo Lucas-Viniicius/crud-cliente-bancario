@@ -22,6 +22,10 @@ public class ServiceCliente {
         return list();
     }
 
+    public Cliente busca(Long id){
+        return repositoryCliente.findById(id).orElse(null);
+    }
+
     public List<Cliente> list(){
         Sort sort = Sort.by("userName").ascending();
         return repositoryCliente.findAll(sort);

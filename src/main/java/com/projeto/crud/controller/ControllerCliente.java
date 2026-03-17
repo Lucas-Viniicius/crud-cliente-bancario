@@ -35,6 +35,11 @@ public class ControllerCliente {
         return serviceCliente.list();
     }
 
+    @GetMapping("/buscar/{id}")
+    public Cliente buscaCliente(@PathVariable Long id){
+        return serviceCliente.busca(id);
+    }
+
     @PutMapping("/editar")
     public List<Cliente> editarCliente(@RequestBody Cliente clienteUpdate){
         return serviceCliente.create(clienteUpdate);
