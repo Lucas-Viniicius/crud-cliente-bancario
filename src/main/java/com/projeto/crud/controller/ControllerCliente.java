@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.projeto.crud.model.Cliente;
 import com.projeto.crud.service.ServiceCliente;
 
+import at.favre.lib.crypto.bcrypt.BCrypt;
+
 @RestController
 @RequestMapping("clientes")
 public class ControllerCliente {
@@ -27,6 +29,10 @@ public class ControllerCliente {
 
     @PostMapping("/cadastrar")
     public List<Cliente> cadastraCliente(@RequestBody Cliente clienteCreate){
+       String passewordHash = BCrypt.withDefaults()
+                            .hashToString(2, clienteCreate.getPassword().toCharArray());
+
+        clienteCreate.setPassword(passewordHash);
         return serviceCliente.create(clienteCreate);
     }
 
